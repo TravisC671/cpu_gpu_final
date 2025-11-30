@@ -80,6 +80,7 @@ class Sequencer:
                 else:
                     value = int(self._system.fetch_memory(control.ea), 16) % 4095
                 self._system.accumulator -= value
+                #! if negative 2's complement it
                 return
             case "CLR":
                 pass
