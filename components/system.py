@@ -25,7 +25,6 @@ class System:
         pass
 
     def insert_memory(self, addr: int, data: str):
-        print(hex(addr), data)
         self._memory[addr] = data
 
     def fetch_memory(self, addr: int) -> str:
@@ -86,6 +85,19 @@ class System:
                 return self.x2
             case Register.X3:
                 return self.x3
+
+    def set_register(self, register: Register, value: int) -> int:
+        match register:
+            case Register.AC:
+                self.accumulator = value
+            case Register.X0:
+                self.x0 = value
+            case Register.X1:
+                self.x1 = value
+            case Register.X2:
+                self.x2 = value
+            case Register.X3:
+                self.x3 = value
 
     def get_registers(self) -> str:
         return f"AC[{self.accumulator:0{6}X}] X0[{self.x0:0{3}X}] X1[{self.x1:0{3}X}] X2[{self.x2:0{3}X}] X3[{self.x3:0{3}X}]"
